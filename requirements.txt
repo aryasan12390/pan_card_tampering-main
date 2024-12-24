@@ -1,6 +1,7 @@
 numpy
 pandas
 Flask
+gunicorn
 imutils
 Keras
 opencv-python
