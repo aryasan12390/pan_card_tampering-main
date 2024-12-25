@@ -1,10 +1,11 @@
 numpy
 pandas
 Flask
+pytesseract
 gunicorn
 imutils
-Keras
+#Keras
 opencv-python
 Pillow
-tensorflow
+#tensorflow
 scikit-image
