@@ -5,68 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Pan Card Tampering</title>
 
-  <!-- CSS  -->
-  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: url('https://source.unsplash.com/1600x900/?technology') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Roboto', sans-serif;
+      color: white;
+    }
+    nav {
+      background-color: rgba(94, 114, 228, 0.9);
+    }
+    .brand-logo img {
+      height: 50px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .form-container {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      margin-top: 100px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    .btn {
+      background-color: #5e72e4;
+    }
+    .btn:hover {
+      background-color: #4e62c4;
+    }
+    h5 {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
-  <nav style="background-color: #5e72e4" class="lighten-1"  role="navigation" style="height: 100px">
+  <nav class="lighten-1" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" class="brand-logo center"><h5>Pan Card Tampering</h5></a>
-      <div style="margin-left: 800px">
-      </div>
+      <a id="logo-container" class="brand-logo center">
+        <img src="https://img.icons8.com/color/48/000000/id-card.png" alt="Logo">Pan Card Tampering
+      </a>
     </div>
   </nav>
 
-
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <div class="row">
-        <form action='/' method="post" class="col s12" enctype="multipart/form-data">
-          <div class="row">
-          	<div class="input-field col s3">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2 form-container">
+        <h4 class="center-align">Check for Tampering</h4>
+        <form action="/" method="post" enctype="multipart/form-data">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Upload</span>
+              <input type="file" name="file_upload" id="file_upload" />
             </div>
-
-            <div class="input-field col s5" style="margin-left: 20px; margin-top: 100px">
-              <div class = "row">
-                  <label for="first_name"><b>Upload Pan Card Image</b></label><br>
-                  <div class = "file-field input-field">
-                    <div class = "btn" style="background-color: #5e72e4">
-                      <span>Browse</span>
-                      <input type = "file" name="file_upload" id="file_upload" />
-                    </div>
-                    <div class = "file-path-wrapper">
-                      <input class = "file-path validate" type = "text" placeholder = "Upload file" name="file_name" id="file_name" />
-                    </div>
-                  </div>
-              </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Choose PAN card image">
             </div>
           </div>
-    
-          <div class="row center">
-            <button type="submit" class="btn-large" style="background-color: #5e72e4">Check</button>
+          <div class="center-align">
+            <button type="submit" class="btn-large">Check</button>
           </div>
         </form>
-       	<div style="text-align: center; padding-top: 50px">
-      		<h5>{{pred}}</h5>
-     	</div>
-
+        <div class="center-align">
+          <h5>{{pred}}</h5>
+        </div>
       </div>
-      <br><br>
     </div>
   </div>
 
-  </div>
-  </div>
-
-  <!--  Scripts-->
-  <script src="./static/js/materialize.js"></script>
-  <script type="text/javascript">
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
     document.getElementById('file_upload').onchange = function () {
-      	document.getElementById('file_name').value = this.value.slice(12,100);
+      const fileName = this.value.split('\\').pop();
+      document.querySelector('.file-path').value = fileName;
     };
   </script>
-
-  </body>
+</body>
 </html>
-
